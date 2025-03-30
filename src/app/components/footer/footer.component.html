@@ -1,0 +1,41 @@
+<footer>
+  <div class="cont">
+    <div class="start">
+      <h3>Iniciar un proyecto</h3>
+      <p>¿Te interesan nuestros servicios? Deberíamos agendar una reunión.</p>
+      <button (click)="toggleDiv()">Contáctanos</button>
+    </div>
+  </div>
+
+  <div class="top">
+    <div class="logo">
+      <p>LaceLabs</p>
+    </div>
+    <div class="social-links">
+      <a (click)="toggleDiv()"><i class='bx bxl-whatsapp'></i></a>
+      <a href="https://www.instagram.com/lacelabs01/" target="_blank"><i class='bx bxl-instagram'></i></a>
+      <a href="https://www.linkedin.com/in/lace-labs-b68704352/" target="_blank"><i
+          class='bx bxl-linkedin-square'></i></a>
+      <a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJlFlbhJzSczDrgsPMbJXgpBPbFXGrsxdBMJbsDhlxhgFzcnRnBtlZrtDlWGxtVjjpCpWZg"
+        target="_blank"><i class='bx bx-envelope'></i></a>
+    </div>
+  </div>
+  <div class="separator"></div>
+  <div class="copyright">
+    <p>Copyright ©2025; Designed By LaceLabs</p>
+  </div>
+</footer>
+
+<!-- Overlay -->
+@if(showDiv){
+  <div class="overlay">
+    <div class="content">
+      <button (click)="toggleDiv()"><i class="fas fa-times"></i></button>
+      <h3>Elija a quien quiere enviarle un mensaje</h3>
+      <nav>
+        <p (click)="goToWhatsapp('https://wa.me/5493382504243')">Joaquin Bello: 3382 50-4243</p>
+        <p (click)="goToWhatsapp('https://wa.me/5493462667569')">Santino Bournot: 3462 667569</p>
+      </nav>
+    </div>
+  </div>
+}

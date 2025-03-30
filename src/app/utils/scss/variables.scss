@@ -1,0 +1,41 @@
+// variables.scss
+
+// Colores del logo
+$color-blanco: #fefefe;
+$color-gris: #a6a1ab;
+$color-rosita: #c492ee;
+$color-violeta: #73469c;
+$color-violeta-oscuro: #4d4254;
+$color-negro: #303030;
+
+// Colores de fondo
+$fondo-blanco: $color-blanco;
+$fondo-gris: $color-gris;
+$fondo-violeta-oscuro: $color-violeta-oscuro;
+$fondo-gris-transparente: #a6a1abb8;
+$fondo-violeta: $color-violeta;
+$fondo-negro: $color-negro;
+
+// Colores de texto
+$texto-blanco: $color-blanco;
+$texto-gris: $color-gris;
+$texto-rosita: $color-rosita;
+$texto-violeta: $color-violeta;
+$texto-violeta-oscuro: $color-violeta-oscuro;
+$texto-negro: $color-negro;
+
+// Colores de botones
+$boton-primario: $color-rosita;
+$boton-secundario: $color-violeta;
+
+// Colores de bordes
+$borde-gris: $color-gris;
+$borde-rosita: $color-rosita;
+$borde-violeta: $color-violeta;
+
+// Responsive breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;

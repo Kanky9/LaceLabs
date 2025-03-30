@@ -5,9 +5,134 @@
   <title>LaceLabs</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+  <header>
+    <app-menu></app-menu>
+    <div id="particles"></div>
+    <div class="info-text">
+      <h1>Bienvenidos a Lace Labs</h1>
+      <h3>Somos Joaquin y Santino, diseñadores y desarrolladores web.</h3>
+      <a class="scroll"><i class='bx bxs-down-arrow' style="cursor: pointer;"></i></a>
+    </div>
+  </header>
   <app-root></app-root>
-</body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles", {
+      particles: {
+        number: {
+          value: 100,
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+        color: {
+          value: "#fff"
+        },
+        shape: {
+          type: "circle",
+          stroke: {
+            width: 0,
+            color: "#000000"
+          }
+        },
+        opacity: {
+          value: 0.8,
+          random: true,
+          animation: {
+            enable: true,
+            speed: 1,
+            opacity_min: 0,
+            sync: false
+          }
+        },
+        size: {
+          value: 3,
+          random: true
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#fff",
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          random: true,
+          straight: false,
+          out_mode: "out",
+          bounce: false,
+        }
+      },
+      interactivity: {
+        detectsOn: "canvas",
+        events: {
+          onHover: {
+            enable: true,
+            mode: "push"
+          },
+          onClick: {
+            enable: true,
+            mode: "push"
+          },
+          resize: true
+        },
+        modes: {
+          repulse: {
+            distance: 100,
+            duration: 0.4
+          },
+          push: {
+            particles_nb: 4
+          }
+        }
+      },
+      retina_detect: true
+    });
+
+    function scrollToSection(duration) {
+      const start = window.pageYOffset;
+      const containerHeight = document.querySelector('header').offsetHeight;
+      const end = start + containerHeight;
+      const change = end - start;
+      const startTime = performance.now();
+
+      function animateScroll(currentTime) {
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1);
+        window.scrollTo(0, start + change * progress);
+
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        }
+      }
+
+      requestAnimationFrame(animateScroll);
+    }
+
+    document.querySelector('.scroll').addEventListener('click', function (event) {
+      event.preventDefault();
+      scrollToSection(300);
+    });
+
+    window.addEventListener('scroll', function () {
+      var scrollTopButton = document.querySelector('.scroll-top');
+      if (scrollTopButton) {
+        if (this.window.pageYOffset > 200) {
+          scrollTopButton.style.display = 'block';
+        } else {
+          scrollTopButton.style.display = 'none';
+        }
+      }
+    });
+  </script>
+  </body>
 </html>

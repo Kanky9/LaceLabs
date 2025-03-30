@@ -20,8 +20,12 @@
     "@angular/router": "^18.0.0",
     "firebase": "^10.13.1",
     "lace-labs": "file:",
+    "ng-particles": "^3.12.0",
+    "particles.js": "^2.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "tsparticles": "^3.5.0",
+    "tsparticles-engine": "^2.12.0",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {

@@ -27,7 +27,9 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.8rem;
-    align-items: start;
+    align-items: stretch;     /* asegura que las celdas llenen la fila */
+    grid-auto-rows: 1fr;      /* obliga a que cada fila tenga la misma altura */
+
 
     @media (max-width: $breakpoint-md) {
       grid-template-columns: 1fr;

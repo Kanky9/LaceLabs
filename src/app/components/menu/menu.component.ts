@@ -4,88 +4,79 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [
-    CommonModule,
-  ],
+  imports: [CommonModule],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit, OnDestroy {
+  isClicked = false;
+  private ticking = false;
 
-  isClicked: boolean = false;
+  onElementClick() { this.isClicked = !this.isClicked; }
 
-  onElementClick() {
-    this.isClicked = !this.isClicked;
+  ngOnInit() { window.addEventListener('scroll', this.onScroll, { passive: true }); }
+  ngOnDestroy() { window.removeEventListener('scroll', this.onScroll); }
+
+  /* ---------- Optimized scroll listener ---------- */
+  private onScroll = () => {
+    if (this.ticking) return;
+    this.ticking = true;
+    requestAnimationFrame(() => {
+      this.updateMenuScrolledState();
+      this.ticking = false;
+    });
   }
 
-  scrollToBottomAyuda() {
-    window.scrollTo({ top: 700, behavior: 'smooth' });
+  private updateMenuScrolledState() {
+    const menu = document.querySelector('.cont') as HTMLElement | null;
+    if (!menu) return;
+    const threshold = window.innerHeight >= 1080 ? 900 : 600;
+    menu.classList.toggle('scrolled', window.scrollY > threshold);
   }
 
-  ngOnInit() {
-    window.addEventListener('scroll', this.onScroll);
+  /* ---------- Generic smooth scroller ---------- */
+  private easeInOutQuad(t: number) {
+    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
   }
 
-  ngOnDestroy() {
-    window.removeEventListener('scroll', this.onScroll);
+  private scrollToTarget(target: Element | number | null, duration = 400, offset = 70) {
+    const start = window.pageYOffset;
+    const to = typeof target === 'number'
+      ? target
+      : target
+        ? (target as Element).getBoundingClientRect().top + start - offset
+        : start;
+
+    const change = to - start;
+    const startTime = performance.now();
+
+    if (Math.abs(change) < 2) return; // ya en posición
+
+    const step = (now: number) => {
+      const elapsed = Math.min((now - startTime) / duration, 1);
+      const eased = this.easeInOutQuad(elapsed);
+      window.scrollTo(0, Math.round(start + change * eased));
+      if (elapsed < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
   }
 
-  onScroll = () => {
-    const menu = document.querySelector('.cont') as HTMLElement;
-    if (menu) {
-      const scrollThreshold = window.innerHeight >= 1080 ? 900 : 600;
-      if (window.scrollY > scrollThreshold) {
-        menu.classList.add('scrolled');
-      } else {
-        menu.classList.remove('scrolled');
-      }
-    }
-  }
+  /* ---------- Public helpers para botones ---------- */
+  scrollToTop() { this.scrollToTarget(0, 300, 0); }
 
-  scrollToTop() {
-    const scrollDuration = 300;
-    const scrollStep = -window.scrollY / (scrollDuration / 15);
-    const scrollInterval = setInterval(() => {
-      if (window.scrollY !== 0) {
-        window.scrollBy(0, scrollStep);
-      } else {
-        clearInterval(scrollInterval);
-      }
-    }, 15);
+  scrollToAboutUs() {
+    const el = document.querySelector('#sobre-nosotros');
+    this.scrollToTarget(el, 400, 70);
   }
 
   scrollToPortfolio() {
-    const scrollDuration = 300;
-    const scrollStep = document.querySelector('.portfolio')!.getBoundingClientRect().top / (scrollDuration / 15);
-    const scrollInterval = setInterval(() => {
-      if (document.querySelector('.portfolio')!.getBoundingClientRect().top > 70) {
-        window.scrollBy(0, scrollStep);
-      } else {
-        clearInterval(scrollInterval);
-      }
-    }, 15);
+    const el = document.querySelector('.portfolio');
+    this.scrollToTarget(el, 350, 70);
   }
 
-  scrollToFooter(){
-    const footer = document.querySelector('footer');
-    if (footer) {
-      const scrollDuration = 400;
-      const start = window.pageYOffset;
-      const end = footer.getBoundingClientRect().top + start;
-      const change = end - start;
-      const startTime = performance.now();
-
-      function animateScroll(currentTime: number) {
-        const elapsedTime = currentTime - startTime;
-        const progress = Math.min(elapsedTime / scrollDuration, 1);
-        window.scrollTo(0, start + change * progress);
-
-        if (progress < 1) {
-          requestAnimationFrame(animateScroll);
-        }
-      }
-
-      requestAnimationFrame(animateScroll);
-    }
+  scrollToFooter() {
+    const el = document.querySelector('footer');
+    this.scrollToTarget(el, 400, 30);
   }
 }

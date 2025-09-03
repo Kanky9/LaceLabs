@@ -1,0 +1,113 @@
+@import '../../utils/scss/variables.scss';
+
+.aboutus {
+  padding: 4rem 1.5rem;
+  background: transparent;
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 2.2rem;
+    h2 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      color: $texto-negro;
+      margin: 0 0 .25rem 0;
+    }
+    .subtitle {
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      color: $texto-gris;
+      margin: 0;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+    align-items: start;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr;
+    }
+
+    .profile {
+      background: $fondo-blanco;
+      border-radius: 12px;
+      padding: 1.6rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      .avatar-wrap {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid $borde-violeta;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+      }
+
+      .name {
+        margin: 0;
+        font-size: 1.25rem;
+        color: $texto-violeta;
+      }
+
+      .role {
+        font-size: 0.88rem;
+        color: $texto-violeta-oscuro;
+        font-weight: 600;
+      }
+
+      .desc {
+        color: $texto-gris;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        text-align: center;
+        margin: 0.25rem 0 1rem 0;
+      }
+
+      .actions {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.6rem;
+          padding: 0.6rem 1rem;
+          border-radius: 999px;
+          text-decoration: none;
+          font-weight: 600;
+          cursor: pointer;
+          transition: transform .14s ease, box-shadow .14s ease;
+          svg.icon { opacity: .95; }
+
+          &.btn-primary {
+            background: linear-gradient(90deg, $boton-primario, $boton-secundario);
+            color: $texto-blanco;
+            border: none;
+            box-shadow: 0 6px 18px rgba(115,70,156,0.18);
+          }
+
+          &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+          }
+        }
+      }
+    }
+  }
+}

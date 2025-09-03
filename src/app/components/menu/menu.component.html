@@ -10,7 +10,7 @@
                 <span class="hover-underline-animation"> Inicio </span>
             </button>
             <button class="cta">
-                <span class="hover-underline-animation"> Sobre Nosotros </span>
+              <span class="hover-underline-animation" (click)="scrollToAboutUs()"> Sobre Nosotros </span>
             </button>
             <button class="cta">
                 <span class="hover-underline-animation" (click)="scrollToPortfolio()"> Trabajos </span>
@@ -53,7 +53,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link active">Sobre Nosotros</a>
+        <a (click)="scrollToAboutUs(); onElementClick()" class="nav-link active">Sobre Nosotros</a>
       </li>
 
       <li class="nav-item">

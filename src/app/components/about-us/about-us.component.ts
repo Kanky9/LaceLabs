@@ -14,14 +14,14 @@ export class AboutUsComponent {
       name: 'Joaquín Bello',
       role: 'Diseñador UI/UX · Frontend Developer',
       img: '../../../assets/img/about-us/joaco.jpeg',
-      cv: 'assets/cv/joaco-cv.pdf',
+      cv: '../../../pdf/CVJoaBello.pdf',
       desc: 'Diseño y adapto interfaces en Figma a experiencias visuales modernas y funcionales en Angular e Ionic.'
     },
     {
       name: 'Santino Bournot',
       role: 'Frontend Developer · Firebase Integration',
       img: '../../../assets/img/about-us/kanky.jpg',
-      cv: 'assets/cv/kanky-cv.pdf',
+      cv: '../../../pdf/CV-Bournot-Santino.pdf',
       desc: 'Desarrollo aplicaciones web y móviles con Angular/Ionic integradas a Firebase, uniendo diseño, lógica y datos en un solo flujo.'
     }
   ];

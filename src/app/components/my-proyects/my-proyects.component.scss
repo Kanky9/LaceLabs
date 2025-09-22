@@ -62,7 +62,7 @@
     margin: 0 auto;
 
     .item {
-      flex: 1 1 300px; // todos ocupan mismo ancho base
+      // flex: 1 1 300px; // todos ocupan mismo ancho base
       max-width: 480px; // límite
       min-height: 350px; // 🔑 altura mínima fija
       background: #fff;

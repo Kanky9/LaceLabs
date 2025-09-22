@@ -10,7 +10,24 @@ import { ProyectItem } from '../../interfaces/proyectItem.interfaces';
   styleUrl: './my-proyects.component.scss',
 })
 export class MyProyectsComponent {
+
   websItem: ProyectItem[] = [
+    {
+      title: 'Melosa Bar',
+      description:
+        'Carta digital para Melosa Bar. La carta permite a los clientes ver el menú completo, incluyendo bebidas y comidas, con descripciones y precios detallados. Además, cuenta con un pánel administrador para que los dueños administren los productos.',
+      image: '../../../assets/img/proyects/webs/melosaBar.png',
+      link: 'https://melosa-77d77.web.app',
+    },
+
+    {
+      title: 'World AI',
+      description:
+        'World AI es una plataforma web que ofrece una variedad de herramientas y recursos impulsados por inteligencia artificial para facilitar diversas tareas y mejorar la productividad de los usuarios.',
+      image: '../../../assets/img/proyects/webs/worldAi.png',
+      link: 'https://world-ai.vercel.app',
+    },
+
     {
       title: 'Kanky Store',
       description:
@@ -44,6 +61,6 @@ export class MyProyectsComponent {
       image: '../../../assets/img/proyects/figma/travelWebsite.png',
       link: 'https://www.instagram.com/reel/DG0t43PMrJw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
     },
-    
+
   ];
 }
